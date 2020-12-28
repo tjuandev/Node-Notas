@@ -4,18 +4,16 @@ const notes = require('./notes');
 
 // CORE Of the Aplication -> READ, ADD, REMOVE, LIST
 
-// Customized Commands:
-
 // Add Command
 
 yargs.command({
-  command: 'add', // Comando 
+  command: 'add',
   describe: 'Add a new note',
   builder: {
     title: {
-      describe: 'This is the title of the note', // Descrição
-      demandOption: true, // Se é orbigatório dizer o título da obra
-      type: 'string' // O tipo primitivo do argumento
+      describe: 'This is the title of the note',
+      demandOption: true, 
+      type: 'string' 
     },
     body: {
       describe: 'This is the body of the note',
@@ -23,9 +21,7 @@ yargs.command({
       type: 'string'
     }
   },
-  handler: (argv) => { // Função que o comando vai disparar, esse argv vai se referir aos argumentos e ajudar nossa vida.
-    /* console.log(color.bold('Title:') + color.italic(argv.title))
-    console.log(color.italic('Body:', argv.body)) */
+  handler: (argv) => { 
     notes.addNote(argv.title, argv.body);
   }
 });
@@ -74,13 +70,4 @@ yargs.command({
   }
 })
 
-// Customize Version:
-
-yargs.version('1.1.0')
-
-/* console.log(yargs.argv); // It shows the arguments you pass in,  and the file name, returning a object...
-console.log(yargs.argv._[0]); */ 
-
-// Ao invés de usar os console.log acima, nós podemos usar:
-
-yargs.parse(); // Assim vai funcionar o nosso programa, e não precisaremos dar console.log sempre.
+yargs.parse(); 
